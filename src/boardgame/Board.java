@@ -8,7 +8,7 @@ public class Board {
 	
 	public Board(int rows, int columns) {
 		if (rows < 1 || columns < 1) {
-			throw new BoardException("Erro na criação do tabuleiro: precisa ter pelo menos 1 linha e 1 coluna.");
+			throw new BoardException("Erro na criaÃ§Ã£o do tabuleiro: precisa ter pelo menos 1 linha e 1 coluna.");
 		}
 		this.rows = rows;
 		this.columns = columns;
@@ -25,21 +25,21 @@ public class Board {
 	
 	public Piece piece(int row, int column) {
 		if (!positionExists(row, column)) {
-			throw new BoardException("Posição não está no tabuleiro.");
+			throw new BoardException("PosiÃ§Ã£o nÃ£o estÃ¡ no tabuleiro.");
 		}
 		return pieces[row][column];
 	}
 	
 	public Piece piece(Position position) {
 		if (!positionExists(position)) {
-			throw new BoardException("Posição não está no tabuleiro.");
+			throw new BoardException("PosiÃ§Ã£o nÃ£o estÃ¡ no tabuleiro.");
 		}
 		return pieces[position.getRow()][position.getColumn()];
 	}
 	
 	public void placePiece(Piece piece, Position position) {
 		if (thereIsAPiece(position)) {
-			throw new BoardException("Já existe uma peça na posição " + position + ".");
+			throw new BoardException("JÃ¡ existe uma peÃ§a na posiÃ§Ã£o " + position + ".");
 		}
 		pieces[position.getRow()][position.getColumn()] = piece;
 		piece.position = position;
@@ -55,7 +55,7 @@ public class Board {
 
 	public boolean thereIsAPiece(Position position) {
 		if (!positionExists(position)) {
-			throw new BoardException("Posição não está no tabuleiro.");
+			throw new BoardException("PosiÃ§Ã£o nÃ£o estÃ¡ no tabuleiro.");
 		}
 		return piece(position) != null;
 	}
