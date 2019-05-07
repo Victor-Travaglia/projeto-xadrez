@@ -55,11 +55,18 @@ public class UI {
 		System.out.println();
 		printCapturedPieces(captured);
 		System.out.println();
-		System.out.println("Turno: " + chessMatch.getTurn());
-		System.out.println("Aguardando jogador: " + chessMatch.getCurrentPlayer());
+		System.out.println("Turno : " + chessMatch.getTurn());
 
-		if (chessMatch.getCheck()) {
-			System.out.println("XEQUE!");
+		if (!chessMatch.getCheckMate()) {
+			System.out.println("Aguardando jogador: " + chessMatch.getCurrentPlayer());
+
+			if (chessMatch.getCheck()) {
+				System.out.println("XEQUE!");
+			}
+		}
+		else {
+			System.out.println("XEQUE MATE!");
+			System.out.println("Vencedor: " + chessMatch.getCurrentPlayer());
 		}
 	}
 
@@ -71,7 +78,7 @@ public class UI {
 			}
 			System.out.println();
 		}
-		System.out.print("  a b c d e f g h");
+		System.out.println("  a b c d e f g h");
 	}
 
 	public static void printBoard(ChessPiece[][] pieces, boolean[][] possibleMoves) {
@@ -82,7 +89,7 @@ public class UI {
 			}
 			System.out.println();
 		}
-		System.out.print("  a b c d e f g h");
+		System.out.println("  a b c d e f g h");
 	}
 
 
@@ -92,7 +99,7 @@ public class UI {
 		}
 
 		if (piece == null) {
-			System.out.print("-");
+			System.out.print("-" + ANSI_RESET);
 		}
 		else {
 			if (piece.getColor() == Color.WHITE) {
@@ -119,8 +126,6 @@ public class UI {
 		System.out.print(ANSI_WHITE);
 		System.out.println(Arrays.toString(white.toArray()));
 		System.out.print(ANSI_RESET);
-
-		System.out.println("Captured pieces:");
 		System.out.print("Black: ");
 		System.out.print(ANSI_YELLOW);
 		System.out.println(Arrays.toString(black.toArray()));
